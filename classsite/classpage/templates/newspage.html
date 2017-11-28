@@ -1,0 +1,17 @@
+{% extends "class_home_page.html" %}
+
+{% block content %}
+    <h3 style="text-align: center">{{news.titlemax}}</h3>
+    <p class="text-muted" style="text-align: center">{{ news.time }}</p>
+    <hr>
+    <img style="height: 200px; width: 100%; display: block;" src= {{ news.photot.url }}>
+    <hr>
+    <p style="text-indent: 2em">{{ news.body|linebreaksbr }}</p>
+    <br><hr>
+    <a class="btn btn-primary btn-lg btn-block" type="button" href="/">带我回主页</a>
+
+{% endblock %}
+{% block texterror %}
+<h4>看那边----></h4>  
+<footer class="blockquote-footer text-warning" style="float:right;">(╯‵□′)╯︵┻━┻</footer>
+{% endblock %}

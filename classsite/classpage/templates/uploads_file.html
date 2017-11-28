@@ -1,0 +1,34 @@
+{% extends "class_home_page.html" %}
+
+{% block content %}
+    <form action="/uploads/success" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset>
+            <div class="form-group">
+                <label for="Select_project">选择科目</label>
+                <select class="form-control" id="Select_project" name="project">
+                    <option value="1">数学</option>
+                    <option value="2">C语言</option>
+                    <option value="3">其他</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="file">选择文件</label>
+                <input class="form-control-file" id="file" type="file" name="file_ppt">
+            </div>
+            <div class="form-group">
+                <label for="passkey">输入密码</label>
+                <input class="form-control" id="passkey" type="password" placeholder="密码" name="passkey">
+            </div>
+            <div class="form-group">
+                <label for="input_file_name">输入文件名称</label>
+                <input class="form-control" id="input_file_name" type="text" name="name">
+            </div>
+            <div class="form-group">
+                <label for="input_name">输入你的名字</label>
+                <input class="form-control" id="input_name" type="text" name="people">
+            </div>
+            <button class="btn btn-primary" type="submit">确认上传</button>
+        </fieldset>
+    </form>
+{% endblock %}

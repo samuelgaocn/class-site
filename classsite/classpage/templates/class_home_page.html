@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            计科一班
+        </title>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary" style="height:80px;">
+            <a class="navbar-brand" href="/" style="margin:0 auto" >计科一班专属空间</a>
+        </nav>
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="list-group" style="opacity: 0.7;">
+                    <a class="list-group-item  list-group-item-action" href="http://123.207.43.62:12345/">
+                        生活点滴
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="/announce/">
+                        班级通知
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="/course/">
+                        班级课程
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="/file/">
+                        课件文件
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="/uploads/">
+                        文件上传
+                    </a>
+                </div>
+                <hr>
+                <div>
+                    <div class="card text-white bg-primary" >
+                        <div class="card-body">
+                            <blockquote class="card-blockquote">
+                                {% block texterror %}
+                                    {% if First %}
+                                        <h3 class="text-warning">最新通知</h3>
+                                        <p>{{First.body | linebreaksbr}}</p>
+                                        <footer class="blockquote-footer" style="float:right;">作者：<cite title="Source Title">{{ First.Author }}</cite></footer>
+                                        <footer class="blockquote-footer" style="float:right;"><cite title="Source Title">{{ First.time }}</cite></footer>                                    
+                                    {% else %}
+                                        <h3 class="text-warning">最新通知</h3>
+                                        <p>现在还没有什么通知，过会在看看吧。</p>
+                                    {% endif %}
+                                {% endblock %}
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8" >
+                <div class="jumbotron">
+                    {% block content %}
+                        {% for new in news %}
+                            <div class="card">
+                                <h3 class="card-header">最新新闻</h3>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ new.titlemax }}</h5>
+                                    <h6 class="card-subtitle text-muted">{{ new.titlemin }}</h6>
+                                </div>
+                                <img style="height: 200px; width: 100%; display: block;" src= {{ new.photot.url }}>
+                                <div class="card-body">
+                                    <p class="card-text">{{ new.introduction }}</p>
+                                    <a class="btn btn-primary" type="button" href="/news/{{ new.id }}">进去看看</a>
+                                    {% if news.has_next %}
+                                        <a class="btn btn-primary" type="button" href="?page={{ news.next_page_number }}" style="float: right">看看别的</a>
+                                    {% else %}
+                                        <a class="btn btn-primary disabled" type="button" href="#" style="float: right">好像已经没有了</a>
+                                    {% endif %}
+                                </div>
+                                <div class="card-footer text-muted">
+                                    {{ new.time }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="list-group" style="opacity: 0.7">
+                    <a class="list-group-item  list-group-item-action" href="http://blog.csdn.net/">
+                        CSDN
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://stackoverflow.com/">
+                        stackoverflow
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://github.com/">
+                        github
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="http://172.28.89.91/">
+                        DGUT oj
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="http://172.28.79.136/">
+                        网上作业平台
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="http://www.dgut.edu.cn/">
+                        东莞理工学院官方网站
+                    </a>
+                </div>
+            </div>
+        </div>
+        <footer class="blockquote-footer">这里是最底部了。。。dev-ZZK</footer>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "class_home_page.html" %}
+
+{% block content %}
+    {% if File_list %}
+        {% for File in File_list %}
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h3 class="text-warning">{{ File.name }}</h3>
+                    <p class="text-muted">{{ File.time }}-----{{ File.people }}</p>
+                    <hr>
+                    <a class="btn btn-info btn-lg btn-block" href="{{ File.file_ppt.url }}">下载</a>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}    
+    {% else %}
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h3 class="text-warning">暂无文件</h3>
+            </div>
+        </div>
+        <hr>   
+    {% endif %}
+    <a class="btn btn-success btn-lg btn-block" type="button" href="/file/">带我回上一层</a>
+{% endblock %}

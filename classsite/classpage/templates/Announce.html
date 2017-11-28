@@ -1,0 +1,26 @@
+{% extends "class_home_page.html" %}
+
+{% block content %}
+    {% if announce_list %}
+        {% for announce in announce_list %}
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h3 class="text-warning">{{ announce.title }}</h3>
+                    <p class="text-muted">{{ announce.time }}</p>
+                    <hr>
+                    <p style="text-indent: 2em;">{{ announce.body | linebreaksbr }}</p>
+                    <footer class="blockquote-footer" style="float:right;">作者：<cite title="Source Title">{{ announce.Author }}</cite></footer>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h3 class="text-warning">无通知</h3>
+                <hr>
+                <p>现在还没有什么通知，过会再看看吧。</p>
+            </div>
+        </div>        
+    {% endif %}
+{% endblock %}
