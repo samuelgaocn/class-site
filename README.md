@@ -1,19 +1,2 @@
-d
-s
-gsgd
-sg
-sd
-g
-sg
-s
-g
-sdg
-sdg# Hello-github
-hahahahhahahha
-ga
-gadgag
-a
-g
-sdg
-sga
+<h1>这是一个班级管理的网站</h1>
 
