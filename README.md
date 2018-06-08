@@ -4,7 +4,7 @@
 ### 关于这个网站我还写了一个教程，就在这个项目目录下的projectshow目录下，名为django_tutorial.pdf，你可以下载到电脑上查看
 ### 运行环境
 python3
-django1.10
+django1.11
 ### 怎么安装
 首先要确认安装了django，如果没安装的话可以通过以下命令安装
 ```
